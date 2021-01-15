@@ -1,48 +1,25 @@
 import React from 'react'
 import './index.css';
-import {useState, useEffect} from 'react';
 import { BsFillBrightnessHighFill, BsMoon } from "react-icons/bs";
 import { MdRadioButtonUnchecked } from "react-icons/md";
 import { IoEnterOutline } from "react-icons/io5";
 import List from './List'
+import { useGlobalContext } from "./context";
 
 const App = () => {
 
-  const [input, setInput] = useState('');
-  const [lightmode, setLightmode] = useState(true);
-  const [list, setList] = useState([]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if(input) {
-      const newInput = {id: new Date().getTime().toString(), name: input, complete: false};
-      setList([...list, newInput]);
-      setInput('');
-    }
-  }
-
-  const deleteTodo = (id) => {
-    const newTodo = list.filter((item) => item.id !== id);
-    setList(newTodo);
-  }
-
-  const lightMode = () => {
-    setLightmode(true);
-  }
-
-  const darkMode = () => {
-    setLightmode(false);
-  }
-
-  const completed = (id) => {
-    const done = list.find((item) => item.id === id);
-    done.complete = true;
-  }
-
-  const showCompleted = () => {
-    const theCompleted = list.filter((item) => item.complete === true);
-    setList(theCompleted)
-  }
+  const { 
+    handleSubmit, 
+    input, setInput, 
+    altList, 
+    showAll, 
+    showActive, 
+    showCompleted, 
+    clearComplete, 
+    lightMode, 
+    lightmode, 
+    darkMode 
+  } = useGlobalContext();
 
   return (
     <main className="App">
@@ -70,23 +47,33 @@ const App = () => {
             <IoEnterOutline />
           </button>
         </form>
-        {(list.length > 0) && (
-          <List todos={list} deleteTodo={deleteTodo} completed={completed} />
+        {altList.length > 0 && (
+          <List />
         )}
         <div className="indicators">
-          <p className="left">{list.length} item(s) left</p>
+          <p className="left">{altList.length} item(s) left</p>
           <div className="mobile-no">
-            <button type="submit">All</button>
-            <button type="submit">Active</button>
+            <button onClick={showAll} type="submit">
+              All
+            </button>
+            <button onClick={showActive} type="submit">
+              Active
+            </button>
             <button onClick={showCompleted} type="submit">
               Completed
             </button>
           </div>
-          <button type="submit">clear completed</button>
+          <button onClick={clearComplete} type="submit">
+            clear completed
+          </button>
         </div>
         <div className="mobile-yes">
-          <button type="submit">All</button>
-          <button type="submit">Active</button>
+          <button onClick={showAll} type="submit">
+            All
+          </button>
+          <button onClick={showActive} type="submit">
+            Active
+          </button>
           <button onClick={showCompleted} type="submit">
             Completed
           </button>
