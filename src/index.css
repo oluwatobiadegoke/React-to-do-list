@@ -1,13 +1,293 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+
+* {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  box-sizing: border-box;
+}
+
+:root {
+  --fontfamily: 'Josefin Sans', sans-serif;
+  --verylightgray: hsl(0, 0%, 98%);
+  --verylightgreyblue: hsl(236, 33%, 92%);
+  --lightgreyblue: hsl(233, 11%, 84%);
+  --darkgreyblue: hsl(236, 9%, 61%);
+  --verydarkgreyblue: hsl(235, 19%, 35%);
+  --verydarkblue: hsl(235, 21%, 11%);
+  --verydarkdesatblue: hsl(235, 24%, 19%);
+  --lightgreyblue: hsl(234, 39%, 85%);
+  --lightgreybluehover: hsl(236, 33%, 92%);
+  --dmdarkgreyblue: hsl(234, 11%, 52%);
+  --dmverydarkgreyblue: hsl(233, 14%, 35%);
+  --dmnverydarkgreyblue: hsl(237, 14%, 26%);
+  --brightblue: hsl(220, 98%, 61%);
+  --fontsize: 18px;
+  --regularfontweight: 400;
+  --largefontweight: 700;
+  --gradient: linear-gradient( to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  --smallwidth: 90vw;
+  --largewidth: 600px;
+}
+
+body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+p,
+button,
+input::placeholder {
+  font-size: var(--fontsize);
+  font-family: var(--fontfamily);
+  font-weight: var(--regularfontweight);
+}
+
+p,
+button,
+input[type=text] {
+  color: var(--verydarkgreyblue)
+}
+
+h1,
+.top-icon {
+  color: var(--verylightgray);
+}
+
+h1 {
+  font-weight: var(--largefontweight);
+  font-family: var(--fontfamily);
+  letter-spacing: 5px;
+  font-size: 200%;
+}
+
+.top-icon {
+  font-size: 150%;
+}
+
+button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.App {
+  width: 100vw;
+  min-height: 100vh;
+  background: var(--verylightgreyblue);
+  position: relative;
+}
+
+.top-bcg {
+  width: 100%;
+  height: 200px;
+  background: url(./images/bg-mobile-light.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.todo {
+  width: var(--smallwidth);
+  position: absolute;
+  top: 30px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+}
+
+form, .do {
+  background: var(--verylightgray)
+}
+
+.description {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+form {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 7px;
+  margin: 20px 0;
+}
+
+.form {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding-left: 10px;
+  border-radius: 7px;
+}
+
+input[type=text] {
+  font-size: 16px;
+}
+
+.submit {
+  font-size: 200%;
+  margin: 0 5px;
+  background: var(--verylightgray);
+  transition: all .4s linear;
+}
+
+.submit:hover {
+  color: var(--brightblue)
+}
+
+.indicators p,
+.indicators button {
+  font-size: 90%;
+  transition: all .4s linear; 
+}
+
+.indicators {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  background: var(--verylightgray);
+  border-radius: 3px 3px 7px 7px;
+  padding: 0 10px;
+  margin-top: 1px;
+}
+
+.indicators button:hover, .mobile-yes button:hover  {
+  color: var(--brightblue);
+}
+
+.indicators button.clear:hover {
+  color: hsl(0, 83%, 66%);
+}
+
+.mobile-no {
+  display: none;
+  pointer-events: none;
+}
+
+.mobile-no button {
+  margin: 0 5px;
+}
+
+.mobile-yes {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  background: var(--verylightgray);
+  padding: 0 10px;
+  margin-top: 1rem;
+  border-radius: 7px;
+  
+}
+
+.mobile-yes button:hover {
+  transition: all .5s linear;
+}
+
+/* List */
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+
+.check {
+  color: var(--verylightgray);
+}
+
+.do {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 0 10px;
+  margin-bottom: 1px;
+}
+
+.names {
+  text-transform: capitalize;
+}
+
+.todo-cont {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.delete {
+  transition: all .5s linear;
+}
+
+.delete:hover {
+  color: hsl(0, 83%, 66%);
+}
+/* ==== */
+
+@media screen and (min-width: 768px) {
+  .todo {
+    width: var(--largewidth);
+    position: absolute;
+    top: 100px;
+  }
+
+  .top-bcg {
+    height: 300px;
+    background: url(./images/bg-desktop-light.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  h1 {
+    letter-spacing: 7px;
+    font-size: 300%;
+  }
+
+  form {
+    height: 70px;
+  }
+
+  .do {
+    height: 60px;
+  }
+
+  .indicators {
+    height: 60px;
+  }
+
+  .mobile-yes {
+    display: none;
+    pointer-events: none;
+  }
+
+  .mobile-no {
+    display: flex;
+    pointer-events: all;
+    align-items: center;
+  }
+
+  .indicators p,
+  .indicators button {
+    font-size: 100%; 
+  }
 }

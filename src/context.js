@@ -1,13 +1,22 @@
 import React, { useState, useContext } from 'react'
 
 const AppContext = React.createContext();
+const getLocalStorage = () => {
+        let theList = localStorage.getItem("list");
+        if(theList) {
+            return(theList = JSON.parse(localStorage.getItem("list")))
+        } else {
+            return [];
+        }
+    }
 
 const AppProvider = ({children}) => {
 
     const [input, setInput] = useState('');
     const [lightmode, setLightmode] = useState(true);
-    const [list, setList] = useState([]);
-    const [altList, setAltList] = useState([]);
+    const [list, setList] = useState(getLocalStorage());
+    const [altList, setAltList] = useState(getLocalStorage());
+    
 
     const handleSubmit = (e) => {
     e.preventDefault();
@@ -58,6 +67,10 @@ const AppProvider = ({children}) => {
     const theActive = list.filter((item) => item.complete === false);
     setAltList(theActive)
     }
+
+    React.useEffect(() => {
+        localStorage.setItem("list", JSON.stringify(list))
+    }, [list, completed]);
 
     return (
         <AppContext.Provider

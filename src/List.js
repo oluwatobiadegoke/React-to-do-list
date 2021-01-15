@@ -1,5 +1,5 @@
 import React from 'react'
-import { MdRadioButtonUnchecked } from "react-icons/md";
+import { BsCheck } from "react-icons/bs";
 import { FaTimes } from "react-icons/fa";
 import { useGlobalContext } from "./context";
 
@@ -11,14 +11,17 @@ const List = () => {
       <div>
           {
             altList.map((todo) => {
-                const {id, name} = todo;
+                const {id, name, complete} = todo;
                 return (
                   <section className="do" key={id}>
-                    <button onClick={() => completed(id)}>
-                      <MdRadioButtonUnchecked />
-                    </button>
-                    <p>{name}</p>
-                    <button onClick={() => deleteTodo(id)}>
+                    <div className="todo-cont">
+                      <div className="circle" onClick={() => completed(id)}>
+                        {complete && <BsCheck className="check" />}
+                      </div>
+                      <p className="names">{name}</p>
+                    </div>
+                    
+                    <button className="delete" onClick={() => deleteTodo(id)}>
                       <FaTimes />
                     </button>
                   </section>

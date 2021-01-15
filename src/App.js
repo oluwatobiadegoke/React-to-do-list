@@ -1,7 +1,6 @@
 import React from 'react'
 import './index.css';
 import { BsFillBrightnessHighFill, BsMoon } from "react-icons/bs";
-import { MdRadioButtonUnchecked } from "react-icons/md";
 import { IoEnterOutline } from "react-icons/io5";
 import List from './List'
 import { useGlobalContext } from "./context";
@@ -28,14 +27,16 @@ const App = () => {
         <div className="description">
           <h1>TODO</h1>
           {lightmode ? (
-            <BsMoon onClick={darkMode} />
+            <BsMoon className="top-icon" onClick={darkMode} />
           ) : (
-            <BsFillBrightnessHighFill onClick={lightMode} />
+            <BsFillBrightnessHighFill
+              className="top-icon"
+              onClick={lightMode}
+            />
           )}
         </div>
         <form onSubmit={handleSubmit}>
           <div className="form">
-            <MdRadioButtonUnchecked />
             <input
               type="text"
               value={input}
@@ -43,13 +44,11 @@ const App = () => {
               onChange={(e) => setInput(e.target.value)}
             />
           </div>
-          <button type="submit">
+          <button className="submit" type="submit">
             <IoEnterOutline />
           </button>
         </form>
-        {altList.length > 0 && (
-          <List />
-        )}
+        {altList.length > 0 && <List />}
         <div className="indicators">
           <p className="left">{altList.length} item(s) left</p>
           <div className="mobile-no">
@@ -63,7 +62,7 @@ const App = () => {
               Completed
             </button>
           </div>
-          <button onClick={clearComplete} type="submit">
+          <button className="clear" onClick={clearComplete} type="submit">
             clear completed
           </button>
         </div>
