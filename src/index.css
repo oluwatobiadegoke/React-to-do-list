@@ -33,6 +33,7 @@
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: all .4s linear;
 }
 
 p,
@@ -63,6 +64,12 @@ h1 {
 
 .top-icon {
   font-size: 150%;
+  cursor: pointer;
+  transition: all .4s linear;
+}
+
+.top-icon:hover {
+  transform: scale(1.2)
 }
 
 button {
@@ -75,11 +82,18 @@ button {
   justify-content: center;
 }
 
-.App {
+.App, .Appdark {
   width: 100vw;
   min-height: 100vh;
-  background: var(--verylightgreyblue);
   position: relative;
+  transition: all .4s linear;
+}
+.App {
+  background: var(--verylightgreyblue);
+}
+
+.Appdark {
+  background: var(--verydarkblue);
 }
 
 .top-bcg {
@@ -88,6 +102,16 @@ button {
   background: url(./images/bg-mobile-light.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  transition: all .4s linear;
+}
+
+.top-bcg-dark {
+  width: 100%;
+  height: 200px;
+  background: url(./images/bg-mobile-dark.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: all .4s linear;
 }
 
 .todo {
@@ -100,9 +124,15 @@ button {
   margin: 0 auto;
 }
 
-form, .do {
-  background: var(--verylightgray)
+.theform, .do {
+  background: var(--verylightgray);
+  transition: all .4s linear;
 }
+
+.theformdark, .dodark {
+  background: var(--verydarkdesatblue);
+  transition: all .4s linear;
+} 
 
 .description {
   display: flex;
@@ -110,7 +140,7 @@ form, .do {
   margin: 10px 0;
 }
 
-form {
+.theform, .theformdark {
   display: flex;
   height: 50px;
   align-items: center;
@@ -133,6 +163,7 @@ input {
   outline: none;
   padding-left: 10px;
   border-radius: 7px;
+  background: transparent;
 }
 
 input[type=text] {
@@ -142,7 +173,7 @@ input[type=text] {
 .submit {
   font-size: 200%;
   margin: 0 5px;
-  background: var(--verylightgray);
+  background:transparent;
   transition: all .4s linear;
 }
 
@@ -151,28 +182,54 @@ input[type=text] {
 }
 
 .indicators p,
-.indicators button {
+.indicators button,
+.indicatorsdark p,
+.indicatorsdark button  {
   font-size: 90%;
   transition: all .4s linear; 
 }
 
-.indicators {
+.indicators, .indicatorsdark {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 50px;
-  background: var(--verylightgray);
   border-radius: 3px 3px 7px 7px;
   padding: 0 10px;
   margin-top: 1px;
+  transition: all .4s linear;
 }
 
-.indicators button:hover, .mobile-yes button:hover  {
+.indicators {
+  background: var(--verylightgray);
+}
+
+.indicatorsdark {
+  background: var(--verydarkdesatblue);
+}
+
+.indicatorsdark button {
+  color: var(--darkgreyblue);
+}
+
+.indicators button:hover, 
+.mobile-yes button:hover, 
+.indicatorsdark button:hover, 
+.mobile-yesdark button:hover {
   color: var(--brightblue);
 }
 
-.indicators button.clear:hover {
+.indicators button.clear:hover, 
+.indicatorsdark button.clear:hover {
   color: hsl(0, 83%, 66%);
+}
+
+.left {
+  color: var(--verydarkgreyblue);
+}
+
+.leftdark {
+  color: var(--dmdarkgreyblue);
 }
 
 .mobile-no {
@@ -193,11 +250,31 @@ input[type=text] {
   padding: 0 10px;
   margin-top: 1rem;
   border-radius: 7px;
-  
+  transition: all .4s linear;
+}
+
+.mobile-yesdark {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  background: var(--verydarkdesatblue);
+  padding: 0 10px;
+  margin-top: 1rem;
+  border-radius: 7px;
+  transition: all .4s linear;
 }
 
 .mobile-yes button:hover {
-  transition: all .5s linear;
+  transition: all .4s linear;
+}
+
+.mobile-yesdark button:hover {
+  transition: all .4s linear;
+}
+
+.mobile-yesdark button {
+  color: var(--darkgreyblue);
 }
 
 /* List */
@@ -225,8 +302,23 @@ input[type=text] {
   margin-bottom: 1px;
 }
 
+.dodark {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 0 10px;
+  margin-bottom: 1px;
+}
+
 .names {
   text-transform: capitalize;
+  color: var(--verydarkgreyblue);
+}
+
+.namesdark {
+  text-transform: capitalize;
+  color: var(--dmdarkgreyblue);
 }
 
 .todo-cont {
@@ -256,6 +348,15 @@ input[type=text] {
     background: url(./images/bg-desktop-light.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    transition: all .4s linear;
+  }
+
+  .top-bcg-dark {
+    height: 300px;
+    background: url(./images/bg-desktop-dark.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: all .4s linear;
   }
 
   h1 {
@@ -263,19 +364,20 @@ input[type=text] {
     font-size: 300%;
   }
 
-  form {
+  .theform, .theformdark {
     height: 70px;
   }
 
-  .do {
+  .do, .dodark {
     height: 60px;
   }
 
-  .indicators {
+
+  .indicators, .indicatorsdark {
     height: 60px;
   }
 
-  .mobile-yes {
+  .mobile-yes, .mobile-yesdark {
     display: none;
     pointer-events: none;
   }
@@ -287,7 +389,9 @@ input[type=text] {
   }
 
   .indicators p,
-  .indicators button {
+  .indicators button,
+  .indicatorsdark p,
+  .indicatorsdark button {
     font-size: 100%; 
   }
 }
