@@ -287,6 +287,7 @@ input[type=text] {
   align-items: center;
   justify-content: center;
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .check {
@@ -394,4 +395,10 @@ input[type=text] {
   .indicatorsdark button {
     font-size: 100%; 
   }
+}
+
+.info {
+  font-size: smaller;
+  text-align: center;
+  margin-top: 15px;
 }

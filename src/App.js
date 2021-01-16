@@ -97,8 +97,10 @@ const App = () => {
             Completed
           </button>
         </div>
+        <p className="info">To identify a todo as completed, please click the circular button on the left.</p>
       </section>
-    </main>
+      
+    </main>  
   );
 }
 
